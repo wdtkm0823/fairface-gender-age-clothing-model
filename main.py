@@ -7,8 +7,10 @@ from torch.utils.data import Dataset
 from torchvision import transforms
 
 BASE_DIR = "."
-IMG_DIR = os.path.join(BASE_DIR, "fairface-img-margin50-trainval/train")
+TRAIN_IMG_DIR = os.path.join(BASE_DIR, "fairface-img-margin50-trainval/train")
+VALIDATION_IMG_DIR = os.path.join(BASE_DIR, "fairface-img-margin50-trainval/val")
 TRAIN_CSV_PATH = os.path.join(BASE_DIR, "fairface_label_train.csv")
+VALIDATION_CSV_PATH = os.path.join(BASE_DIR, "fairface_label_val.csv")
 
 df = pd.read_csv(TRAIN_CSV_PATH)
 
@@ -80,4 +82,5 @@ val_transform = transforms.Compose(
 )
 
 # Dataset インスタンス
-train_dataset = FairFaceDataset(train_df, IMG_DIR, transform=train_transform)
+train_dataset = FairFaceDataset(train_df, TRAIN_IMG_DIR, transform=train_transform)
+val_dataset = FairFaceDataset(val_df, VALIDATION_IMG_DIR, transform=val_transform)
