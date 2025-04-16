@@ -88,3 +88,5 @@ val_dataset = FairFaceDataset(val_df, VALIDATION_IMG_DIR, transform=val_transfor
 # DataLoader
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=2)
 val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False, num_workers=2)
+
+print("Train samples:", len(train_dataset), "Val samples:", len(val_dataset))
