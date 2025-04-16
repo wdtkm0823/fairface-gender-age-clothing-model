@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from PIL import Image
 from sklearn.model_selection import train_test_split
-from torch.utils.data import Dataset
+from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 
 BASE_DIR = "."
@@ -84,3 +84,7 @@ val_transform = transforms.Compose(
 # Dataset インスタンス
 train_dataset = FairFaceDataset(train_df, TRAIN_IMG_DIR, transform=train_transform)
 val_dataset = FairFaceDataset(val_df, VALIDATION_IMG_DIR, transform=val_transform)
+
+# DataLoader
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True, num_workers=2)
+val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False, num_workers=2)
